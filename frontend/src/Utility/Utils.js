@@ -7,8 +7,7 @@ const BucketName = 'pdf';
 const supabaseUrl = 'https://abkmbjrjfhaxncsfchcn.supabase.co'; //add key and url the run 
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFia21ianJqZmhheG5jc2ZjaGNuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTExODc5NzQsImV4cCI6MjA2Njc2Mzk3NH0.e7GP5hsmhWvY3ybkMg57sUZ64oZRtR6EZNI5jXBtdYQ';
 
-
-console.log("ENV URL:", supabaseUrl);
+ 
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 const PDFUploader = async (file) => {
@@ -24,9 +23,7 @@ const PDFUploader = async (file) => {
             });
 
         if (uploadError) {
-            console.log(uploadError);
-            // setError(`Upload failed: ${uploadError.message}`);
-            // setUploading(false);
+            console.log(uploadError); 
             return;
         }
 
