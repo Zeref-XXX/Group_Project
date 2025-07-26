@@ -1,31 +1,38 @@
-const express = require('express')
-const app = express()
-require('dotenv').config();
-require('./models/db');
-const bodyparser = require('body-parser')
-const cors = require('cors')
-const AuthRouter = require('./Routes/AuthRouter') 
-const action=require('./Routes/Actions');
+// backend/index.js
 
+const express = require("express");
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const cors = require("cors"); // 1. IMPORT THE CORS PACKAGE
 
-app.use(cors({
-  origin: "*",
-  credentials:true
-}));
+dotenv.config();
 
-const PORT = process.env.PORT || 4000;
+const UserRoute = require("./routes/user");
 
-app.use(bodyparser.json());
+mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true });
+const db = mongoose.connection;
+db.on("error", (err) => {
+  console.log(err);
+});
+db.once("open", () => {
+  console.log("Database Connection Established!");
+});
 
-app.get('/', (req, res) => {
-    res.send("working")
-})
+const app = express();
 
+app.use(morgan("dev"));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-app.use('/auth', AuthRouter); 
-app.use('/action',action);
+// 2. USE THE CORS MIDDLEWARE to allow cross-origin requests
+// This must come BEFORE your routes are defined.
+app.use(cors());
 
-
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
-    console.log(" listning at  ", PORT)
-})
+  console.log(`Server is running on port ${PORT}`);
+});
+
+app.use("/api/user", UserRoute);
