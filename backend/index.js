@@ -12,10 +12,17 @@ const action=require('./Routes/Actions');
 //   origin: "*",
 //   credentials:true
 // }));
+// app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:1234", // Your frontend URL
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 const PORT = process.env.PORT || 4000;
 
-app.use(cors());
 app.use(bodyparser.json());
 
 app.get('/', (req, res) => {
