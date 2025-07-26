@@ -6,6 +6,6 @@
 
 # Ignore all dist folders
 **/dist/
-
+./.env
 ./package-lock.json
 
