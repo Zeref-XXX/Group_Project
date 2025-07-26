@@ -9,7 +9,8 @@ const action=require('./Routes/Actions');
 
 
 app.use(cors({
-  origin: "*"
+  origin: "*",
+  credentials:true
 }));
 
 const PORT = process.env.PORT || 4000;
