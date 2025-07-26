@@ -15,7 +15,8 @@ const action=require('./Routes/Actions');
 // app.use(cors());
 app.use(
   cors({
-    origin: "*", // Your frontend URL  
+    origin: "*", // Your frontend URL  ,
+    credentials:true
   })
 );
 
