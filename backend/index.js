@@ -14,14 +14,9 @@ app.use(cors({
 
 const PORT = process.env.PORT || 4000;
 
-
-
-
 app.use(bodyparser.json());
 
-
-
-app.get('/ping', (req, res) => {
+app.get('/', (req, res) => {
     res.send("working")
 })
 
