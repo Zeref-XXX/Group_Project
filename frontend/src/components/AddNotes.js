@@ -65,7 +65,7 @@ export default function AddNotes({ notes, setNotes }) {
 
     const userId = localStorage.getItem("id");
     const loggedUser = localStorage.getItem("loggedInUser");
-    console.log(loggedUser);
+    // console.log(loggedUser);
     if (!userId) {
       alert("User ID not found. Please log in again.");
       return;
