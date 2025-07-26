@@ -18,7 +18,7 @@ const UserD = async (req, res) => {
             return res.status(400).json({ error: 'User ID is required.' });
         }
 
-        const data = await userModel.findOne({ userId });
+        const data = await userModel.findOne({ _id: userId }); 
         console.log(data)
         if (!data) {
             return res.status(404).json({ error: 'User not found.' });
