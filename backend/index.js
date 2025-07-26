@@ -15,9 +15,7 @@ const action=require('./Routes/Actions');
 // app.use(cors());
 app.use(
   cors({
-    origin: "http://localhost:1234", // Your frontend URL
-    methods: ["GET", "POST", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    origin: "*", // Your frontend URL  
   })
 );
 
