@@ -21,7 +21,7 @@ app.use(bodyparser.json());
 
 
 
-app.use('/ping', (req, res) => {
+app.get('/ping', (req, res) => {
     res.send("working")
 })
 
